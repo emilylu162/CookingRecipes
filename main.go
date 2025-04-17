@@ -28,6 +28,10 @@ func main() {
 
 	r.HandleFunc("/", homeHandler)
 	r.HandleFunc("/recipes", listRecipesHandler)
+
+	r.HandleFunc("/recipes/new", newRecipeFormHandler).Methods("GET")
+	r.HandleFunc("/recipes/new", createRecipeHandler).Methods("POST")
+
 	r.HandleFunc("/recipes/{id}", showRecipeHandler)
 
 	log.Println("Server started at http://localhost:8080")
@@ -67,4 +71,31 @@ func showRecipeHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	http.NotFound(w, r)
+}
+
+func newRecipeFormHandler(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "recipe_form", nil)
+}
+
+func createRecipeHandler(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+	if err != nil {
+		http.Error(w, "Unable to parse form", http.StatusBadRequest)
+		return
+	}
+
+	// Create a new Recipe from form values
+	newID := len(recipes) + 1
+	newRecipe := Recipe{
+		ID:          newID,
+		Title:       r.FormValue("title"),
+		Description: r.FormValue("description"),
+		Time:        r.FormValue("time"),
+	}
+
+	// Add to the in-memory slice
+	recipes = append(recipes, newRecipe)
+
+	// Redirect to /recipes
+	http.Redirect(w, r, "/recipes", http.StatusSeeOther)
 }

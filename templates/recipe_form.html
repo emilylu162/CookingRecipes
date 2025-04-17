@@ -1,0 +1,17 @@
+{{define "content"}}
+<h1>Add a New Recipe</h1>
+<form method="POST" action="/recipes/new">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="time">Time:</label><br>
+    <input type="text" id="time" name="time" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" rows="5" cols="40" required></textarea><br><br>
+
+    <button type="submit">Add Recipe</button>
+</form>
+<p><a href="/recipes">← Back to Recipes</a></p>
+{{end}}
+

@@ -1,12 +1,15 @@
 {{define "content"}}
 <h1>All Recipes</h1>
-<ul>
+<a href="/recipes/new">➕ Add New Recipe</a>
+
+<div class="recipe-grid">
     {{range .}}
-        <li>
-            <a href="/recipes/{{.ID}}">
-                <strong>{{.Title}}</strong> ({{.Time}})
-            </a>
-        </li>
+        <a href="/recipes/{{.ID}}" class="recipe-card">
+            <h3>{{.Title}}</h3>
+            <p class="time">⏱ {{.Time}}</p>
+            <p>{{.Description}}</p>
+        </a>
     {{end}}
-</ul>
+</div>
 {{end}}
+

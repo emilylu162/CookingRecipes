@@ -6,9 +6,14 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+    <header>
+        <h1>🍴 Emily's Recipe App</h1>
+        <p>Stirring up joy, one recipe at a time.</p>
+    </header>
     <nav>
         <a href="/">Home</a> |
-        <a href="/recipes">Recipes</a>
+        <a href="/recipes">Recipes</a> |
+        <a href="/recipes/new">Add New</a>
     </nav>
     <main>
         {{template "content" .}}
@@ -16,5 +21,6 @@
 </body>
 </html>
 {{end}}
+
 
 
