@@ -1,6 +1,17 @@
 {{define "content"}}
+<a href="/recipes/{{.ID}}/edit" class="btn edit-btn">✏️ Edit Recipe</a>
 <h1>{{.Title}}</h1>
-<p><strong>Time:</strong> {{.Time}}</p>
-<p><strong>Description:</strong> {{.Description}}</p>
-<a href="/recipes">← Back to all recipes</a>
+
+<p class="text-muted">⏱ {{.Time}}</p>
+
+{{if .ImagePath}}
+    <img src="{{.ImagePath}}" alt="{{.Title}}" class="recipe-detail-image">
+{{else}}
+    <img src="/uploads/images/default.jpeg" alt="Default image" class="recipe-detail-image">
 {{end}}
+
+<p>{{.Description}}</p>
+
+<p style="margin-top:2rem;"><a href="/recipes">← Back to Recipes</a></p>
+{{end}}
+

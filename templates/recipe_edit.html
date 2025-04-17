@@ -1,0 +1,24 @@
+{{define "content"}}
+<h1>Edit Recipe: {{.Title}}</h1>
+<form method="POST" action="/recipes/{{.ID}}/edit" enctype="multipart/form-data">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" value="{{.Title}}" required><br><br>
+
+    <label for="time">Time:</label><br>
+    <input type="text" id="time" name="time" value="{{.Time}}" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" rows="5" cols="40" required>{{.Description}}</textarea><br><br>
+
+    {{if .ImagePath}}
+        <p>Current Image:</p>
+        <img src="{{.ImagePath}}" style="max-width:300px; border-radius:8px;"><br><br>
+    {{end}}
+
+    <label for="image">Upload New Image (optional):</label><br>
+    <input type="file" id="image" name="image" accept="image/*"><br><br>
+
+    <button type="submit">Update Recipe</button>
+</form>
+<p><a href="/recipes/{{.ID}}">← Back to Recipe</a></p>
+{{end}}

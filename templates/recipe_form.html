@@ -1,6 +1,6 @@
 {{define "content"}}
 <h1>Add a New Recipe</h1>
-<form method="POST" action="/recipes/new">
+<form method="POST" action="/recipes/new" enctype="multipart/form-data">
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" required><br><br>
 
@@ -9,6 +9,9 @@
 
     <label for="description">Description:</label><br>
     <textarea id="description" name="description" rows="5" cols="40" required></textarea><br><br>
+
+    <label for="image">Image:</label><br>
+    <input type="file" id="image" name="image" accept="image/*"><br><br>
 
     <button type="submit">Add Recipe</button>
 </form>
