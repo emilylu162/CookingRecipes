@@ -1,0 +1,11 @@
+{{define "content"}}
+<h1>Log In</h1>
+<form method="POST" action="/login">
+  <label>Username</label><br>
+  <input name="username" required><br><br>
+  <label>Password</label><br>
+  <input type="password" name="password" required><br><br>
+  <button type="submit">Log In</button>
+</form>
+<p>Don’t have an account? <a href="/signup">Sign up here</a>.</p>
+{{end}}

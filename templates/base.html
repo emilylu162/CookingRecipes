@@ -1,26 +1,35 @@
 {{define "base"}}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Stirring Stories</title>
-    <link rel="stylesheet" href="/static/style.css">
+  <meta charset="UTF-8">
+  <title>Recipe App</title>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <header>
-        <h1>🍴 Stirring Stories</h1>
-        <p>Stirring up joy, one recipe at a time.</p>
-    </header>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/recipes">Recipes</a> |
+  <header>
+    <h1>🍴 Stirring Stories</h1>
+    {{if .CurrentUser}}
+      <nav>
+        <a href="/recipes">My Recipes</a>
         <a href="/recipes/new">Add New</a>
-    </nav>
-    <main>
-        {{template "content" .}}
-    </main>
+        <a href="/logout">Log Out</a>
+      </nav>
+    {{else}}
+      <nav>
+        <a href="/login">Log In</a>
+        <a href="/signup">Sign Up</a>
+      </nav>
+    {{end}}
+  </header>
+
+  <main>
+    {{template "content" .Payload}}
+  </main>
 </body>
 </html>
 {{end}}
+
 
 
 
